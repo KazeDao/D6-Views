@@ -1,0 +1,29 @@
+{% extends 'flatpages/default.html' %}
+
+{% block title %}
+News
+{% endblock title %}
+
+{% block content %}
+   <h1>Все новости и статьи</h1>
+   <h3>Всего статей на сайте: {{ news|length }}</h3>
+   <hr>
+   {% if news %}
+       <table>
+           <tr>
+               <td>Заголовок</td>
+               <td>Дата публикации</td>
+               <td>Превью</td>
+           </tr>
+           {% for post in news %}
+           <tr>
+               <td>{{ post.post_title }}</td>
+               <td>{{ post.post_time|date:'d M Y' }}</td>
+               <td>{{ post.post_text|truncatechars:20 }}</td>
+           </tr>
+           {% endfor %}
+       </table>
+   {% else %}
+       <h2>По какой-то причине все статьи и новости пропали!</h2>
+   {% endif %}
+{% endblock content %}
