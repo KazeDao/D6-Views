@@ -19,6 +19,3 @@ def censor(value: str):
         value = re_sub(regex, '*' * len(word), value)
 
     return value
-
-
-#return f'{text}'
